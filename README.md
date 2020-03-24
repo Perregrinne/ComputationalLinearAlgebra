@@ -9,5 +9,5 @@ The Javascript code editor used is [ace](https://ace.c9.io/).
 
 
 I've been looking through various useful resources including:
-- [Khan Academy](https://www.khanacademy.org/)
+- [Khan Academy](https://www.khanacademy.org/math/linear-algebra)
 - [Godot Engine Documentation](https://docs.godotengine.org/en/stable/tutorials/math/vector_math.html)

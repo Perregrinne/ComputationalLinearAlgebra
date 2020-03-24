@@ -1,0 +1,210 @@
+@media only screen and (max-width: 500px) {
+    #cla{
+        font-size: x-small;
+    }
+    li{
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 2px;
+        margin: 2px;
+    }
+    #home{
+        font-size: x-small;
+    }
+    #articles{
+        font-size: x-small;
+    }
+}
+@media only screen and (min-width: 501px) and (max-width: 767px) {
+    #cla{
+        font-size: large;
+    }
+    li{
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 0.12em 1em;
+        margin: 0.1em 10vw 0.1em 7vw;
+    }
+    #home{
+        font-size: medium;
+    }
+    #articles{
+        font-size: x-small;
+    }
+}
+@media only screen and (min-width: 768px) {
+    #cla{
+        font-size: xx-large;
+    }
+    li{
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 0.25em 2em;
+        margin: 0.1em 10vw 0.1em 7vw;
+    }
+    #articles{
+        font-size: large;
+    }
+}
+html, body {
+    height: 100%;
+    color: rgba(0, 0, 0, 0.7);
+}
+body{
+    display: flex;
+    flex-direction: column;
+    background: #d6fced;
+}
+#page-content{
+    flex: 1 0 auto;
+}
+#toc{
+    margin: 1em 10% 1em 10%;
+    padding: 3em 10% 1em 10%;
+    background-color: rgba(0, 0, 0, 0.1);
+    font-family: "Lora", serif;
+}
+#page-title{
+    margin-bottom: 0.75em;
+}
+#nav-menu{
+    height: 75px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 90%, rgba(0, 0, 0, 0.25) 100%);
+    padding: 5px 10vw;
+    color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+#home{
+    position: absolute;
+    right: 10%;
+    top: 25px;
+    display: inline-block;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 85%, rgba(0, 0, 0, 0.3) 100%);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-family: "Baloo 2", sans-serif;
+}
+#cla{
+    position: absolute;
+    left: 10%;
+    top: 15px;
+    font-family: "Baloo 2", sans-serif;
+}
+#home:hover{
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 85%, rgba(0, 0, 0, 0.15) 100%);
+    color: #888;
+    text-decoration: none;
+}
+#footer{
+    flex-shrink: 0;
+    text-align: center;
+    min-height: 35px;
+    padding: 5px 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.05) 85%, rgba(0, 0, 0, 0.5) 100%);
+}
+ul{
+    list-style-type: none;
+}
+li{
+    font-size: larger;
+}
+li:hover{
+    background-color: rgba(0, 0, 0, 0.075);
+}
+.bttn{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.7);
+}
+.bttn:hover{
+    color: rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+}
+a{
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    text-decoration: underline;
+}
+a:hover{
+    color: rgba(0, 0, 0, 0.4);
+}
+.equation{
+    text-align: center;
+    padding: 0.5em 0.5em;
+}
+#process,#examples,#practice,#jscode{
+    font-weight: bold;
+    margin: 1em 0;
+    padding-top: 1em;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+#editor{
+    min-height: 50em;
+    margin: 1em 0;
+}
+#runjs{
+    border-radius: 5px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 85%, rgba(0, 0, 0, 0.3) 100%);
+    border: none;
+    width: 7.5em;
+    height: 2em;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+}
+#runjs:hover{
+    border-radius: 5px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 85%, rgba(0, 0, 0, 0.15) 100%);
+    color: rgba(0, 0, 0, 0.5);
+}
+#articles{
+    background: rgba(0, 0, 0, 0.125);
+    min-height: 45px;
+    width: 100%;
+    display: inline-block;
+    padding: 0.5em 10% 0 10%;
+}
+#next{
+    position: absolute;
+    display: inline;
+    right: 20%;
+    padding-right: 1em;
+}
+#top{
+    position: absolute;
+    display: inline;
+    left: 30%;
+    right: 30%;
+    text-align: center;
+}
+#prev{
+    position: absolute;
+    display: inline;
+    left: 20%;
+    padding-left: 1em;
+}
+img{
+    margin: 1em;
+}
+.nav-link{
+    display: inline-block;
+    margin: 0 0.125em 0.25em 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 85%, rgba(0, 0, 0, 0.3) 100%);
+    color: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 0.5em;
+}
+.nav-link:hover{
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 85%, rgba(0, 0, 0, 0.15) 100%);
+}
+#background-gradient{
+    background: linear-gradient(to bottom, #d6fced 50%, #a3e2e2 100%);
+}
+#canv{
+    z-index: -1;
+    display: block;
+    position: absolute;
+    float: left;
+    left: 0;
+    right: 0;
+    top: 5px;
+    bottom: 70px;
+}

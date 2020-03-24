@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Computational Linear Algebra</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2|Lora&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/css/main.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="/js/main.js"></script>
+        <script src="https://pagecdn.io/lib/ace/1.4.8/ace.js" crossorigin="anonymous" integrity="sha256-+svOVB1WmhKhTy7N21gWvtyXn91qF0r52P2hIArRRug=" ></script>
+        <script src="https://pagecdn.io/lib/ace/1.4.8/theme-twilight.min.js" crossorigin="anonymous"  ></script>
+        <script src="https://pagecdn.io/lib/ace/1.4.8/mode-javascript.min.js" crossorigin="anonymous"  ></script>
+    </head>
+    <body data-ace="true">
+        <div id="page-content">
+            <div id="nav-menu">
+                <p id="cla" style="display: inline-block;">Computational Linear Algebra</p>
+                <a class="bttn" href="/" id="home">Table of Contents</a>
+            </div>
+            <div id="toc">
+                <h3 id="page-title" style="text-align: center;">Inverting Matrices</h3>
+                A common operation you will come across with a matrix is that you need to invert it.
+                This is because matrix division is non-existent.
+                Instead of dividing matrices by each other, you multiply one by the inverse of the other. 
+                It's also really important to note that not all matrices can be inverted.
+                In some cases, you will come across a situation where you would accidentally divide by zero, which means the matrix has no inverse.
+                To find the inverse, you will first need to find its <a href="determinant.html">determinant</a> and its <a href="adjugate.html">adjugate</a>.
+                <h5 id="process">Steps:</h5>
+                The first step is to find the <a href="determinant.html">determinant</a> of the matrix.
+                \begin{equation*}
+                \overset{\rightharpoonup}v = 
+                \begin{bmatrix}
+                a\\
+                b\\
+                c\\
+                d
+                \end{bmatrix}
+                \xrightarrow[]{}
+                \sqrt{a^2 + b^2 + c^2 + d^2} = ||\overset{\rightharpoonup}v||
+                \end{equation*}
+                Once you have the length, divide each element in the vector by that length, and it should look something like this:
+                \begin{equation*}
+                \hat{v} = \frac{&lt;a, b, c, d&gt;}{||\overset{\rightharpoonup}v||}
+                \space\space\space\space or\space\space\space\space
+                \hat{v} = \begin{bmatrix}\frac{a}{||\overset{\rightharpoonup}v||}\\
+                \frac{b}{||\overset{\rightharpoonup}v||}\\
+                \frac{c}{||\overset{\rightharpoonup}v||}\\
+                \frac{d}{||\overset{\rightharpoonup}v||}
+                \end{bmatrix}
+                \end{equation*}
+                <h5 id="examples">Examples:</h5>
+                <strong>1)</strong> Suppose we have our vector:
+                <div class="equation" lang="latex">
+                \begin{equation*}
+                \overset{\rightharpoonup}A = 
+                \begin{bmatrix}
+                3\\
+                4
+                \end{bmatrix}
+                \end{equation*}
+                </div>
+                First, find the length using the distance formula:
+                <div class="equation" lang="latex">
+                \begin{equation*}
+                ||\overset{\rightharpoonup}A|| = \sqrt{3^2 + 4^2} = \sqrt{25} = 5
+                \end{equation*}
+                </div>
+                Now divide each element by that length:
+                <div class="equation" lang="latex">
+                \begin{equation*}
+                \hat{A} = \frac{&lt;3, 4&gt;}{5} = \begin{bmatrix}\frac{3}{5}\\ \frac{4}{5}\end{bmatrix}
+                \end{equation*}
+                </div>
+                And we are done!
+                <br>
+                <br>
+                <strong>2)</strong> Let's try another one, but this time with more dimensions:
+                <div class="equation" lang="latex">
+                    \begin{equation*}
+                    \overset{\rightharpoonup}B = 
+                    \begin{bmatrix}
+                    5\\
+                    7\\
+                    3\\
+                    4\\
+                    3\\
+                    6
+                    \end{bmatrix}
+                    \end{equation*}
+                    </div>
+                    We use the distance formula on the whole thing:
+                    <div class="equation" lang="latex">
+                    \begin{equation*}
+                    ||\overset{\rightharpoonup}B|| = \sqrt{5^2 + 7^2 + 3^2 + 4^2 + 3^2 + 6^2} = \sqrt{144} = 12
+                    \end{equation*}
+                    </div>
+                    Now divide each element by that length:
+                    <div class="equation" lang="latex">
+                    \begin{equation*}
+                    \hat{B} = \frac{&lt;5, 7, 3, 4, 3, 6&gt;}{12} = \begin{bmatrix}\frac{5}{12}\\ \frac{7}{12}\\ \frac{1}{4}\\ \frac{1}{3}\\ \frac{1}{4}\\ \frac{1}{2}\end{bmatrix}
+                    \end{equation*}
+                    </div>
+                    And there you have it!
+                <h5 id="jscode">Code:</h5>
+                Now, let's see how this might look in Javascript:<br>
+                <button id="runjs" type="button" onclick="executeCode()" style="margin-top: 1em;">Run Code</button>
+                &nbsp;(If nothing happens, you may have an error)
+                <div id="editor">//Our vector, a: 
+var a = [4, 3, 12]; //Go ahead and add or remove values.
+
+//---FINDING THE LENGTH OF a--- 
+//First, sum up the squares of each element in the root: 
+var sum = 0; 
+for (i = 0; i < a.length; i++) { 
+    sum += Math.pow(a[i], 2); 
+} 
+//Then take the square root of that sum: 
+var len = Math.sqrt(sum);
+//Output the length:
+alert("The length: " + len);
+
+//---DIVIDING EACH ELEMENT BY THE LENGTH---
+//The output string will look similar to this: 
+//"The normalized vector a = [0.02, 0.01, 0.07]"
+var norm = "The normalized vector a = [";
+//Divide each element in the vector by the length:
+for (i = 0; i < a.length; i++) { 
+    norm += a[i] / sum;
+    //If we have more elements to list, add another comma:
+    if(i + 1 < a.length)
+    {
+        norm += ", ";
+    }
+}
+norm += "]";
+//Print out the normalized vector:
+alert(norm);</div>
+            <div id="articles">
+                <div id="prev">&lt; <a href="determinant.html">Determinants</a></div>
+                <div id="top"><a href="#page-content">Top of Page</a></div>
+                <div id="next"><a href="inverse.html">Inverting Matrices</a> &gt;</div>
+            </div>
+            </div>
+        </div>
+        <div id="footer">
+            Copyright © 2020 Austin Jacob
+        </div>
+    </body>
+    <script>
+    setup();
+    </script>
+</html>

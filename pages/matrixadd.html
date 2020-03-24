@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Computational Linear Algebra</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2|Lora&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/css/main.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="/js/main.js"></script>
+        <script src="https://pagecdn.io/lib/ace/1.4.8/ace.js" crossorigin="anonymous" integrity="sha256-+svOVB1WmhKhTy7N21gWvtyXn91qF0r52P2hIArRRug=" ></script>
+        <script src="https://pagecdn.io/lib/ace/1.4.8/theme-twilight.min.js" crossorigin="anonymous"  ></script>
+        <script src="https://pagecdn.io/lib/ace/1.4.8/mode-javascript.min.js" crossorigin="anonymous"  ></script>
+    </head>
+    <body data-ace="true">
+        <div id="background-gradient">
+        <div id="page-content">
+            <div id="nav-menu">
+                <canvas id="tris" width="750px" height="65px"></canvas>
+                <p id="cla" style="display: inline-block;">Computational Linear Algebra</p>
+                <a class="bttn" href="/" id="home">Table of Contents</a>
+            </div>
+            <div id="toc">
+                <div id="page-nav"><a href="#process" class="nav-link">Steps</a> <a href="#examples" class="nav-link">Examples</a> <a href="#practice" class="nav-link">Practice</a> <a href="#jscode" class="nav-link">Code</a></div><br>
+                <h3 id="page-title" style="text-align: center;">Matrix Addition</h3>
+                Here, we will discuss adding matrices or vectors. The addition is pretty simple and straightforward. 
+                There should be no tricks or surprises.
+                You just need to add together each corresponding element in both matrices or vectors. 
+                If you happen to be looking at a graph, you might notice that when you add vectors, you can take one vector, 
+                put the tail of it (the end without the arrow tip) to the head of the other vector, and the location of the 
+                head of the second vector will be where the head of the sum of the two added vectors is:<br>
+                <img src="/img/vectadd.jpg"/><br>
+                If vector <strong>a</strong> goes 3 up and 2 over, and <strong>b</strong> goes 1 up and 3 over, then vector <strong>a + b</strong> goes up 4 (3 + 1 up) and 5 over (2 + 3 over). 
+                It's worth noting that <strong>vectors or matrices that are not of the same size cannot be added together!</strong> 
+                This means you cannot add a 4x2 matrix to a 5x3 matrix. This also applies to vectors. 
+                <h5 id="process">Steps:</h5>
+                Add the first element in both matrices, then the second, third, and so on...
+                <div class="equation" lang="latex">
+                \begin{equation*}
+                \begin{bmatrix}
+                a&b&c\\
+                d&e&f\\
+                g&h&i
+                \end{bmatrix} + 
+                \begin{bmatrix}
+                j&k&l\\
+                m&n&o\\
+                p&q&r
+                \end{bmatrix} =
+                \begin{bmatrix}
+                a+j&b+k&c+l\\
+                d+m&e+n&f+o\\
+                g+p&h+q&i+r
+                \end{bmatrix}
+                \end{equation*}
+                </div>
+                <h5 id="examples">Examples:</h5>
+                <strong>1)</strong> Let's start out by adding two vectors. Just add each element in the same row:
+                <div class="equation" lang="latex">
+                \begin{equation*}
+                \begin{bmatrix}
+                1\\
+                9\\
+                2
+                \end{bmatrix} + 
+                \begin{bmatrix}
+                9\\
+                7\\
+                3
+                \end{bmatrix} =
+                \begin{bmatrix}
+                1+9\\
+                9+7\\
+                2+3
+                \end{bmatrix} =
+                \begin{bmatrix}
+                10\\
+                16\\
+                5
+                \end{bmatrix}
+                \end{equation*}
+                </div>
+                And that is the sum of the vectors.
+                <br>
+                <br>
+                <strong>2)</strong> Suppose we have our 3x3 matrices. We add each corresponding element:
+                <div class="equation" lang="latex">
+                \begin{equation*}
+                \begin{bmatrix}
+                1&5&0\\
+                6&2&8\\
+                1&3&4
+                \end{bmatrix} + 
+                \begin{bmatrix}
+                9&0&8\\
+                3&1&7\\
+                5&3&4
+                \end{bmatrix} =
+                \begin{bmatrix}
+                1+9&5+0&0+8\\
+                6+3&2+1&0+7\\
+                1+5&3+3&4+4
+                \end{bmatrix} =
+                \begin{bmatrix}
+                10&5&8\\
+                9&6&7\\
+                6&6&8
+                \end{bmatrix}
+                \end{equation*}
+                </div>
+                Remember that this only works since we are trying to add two matrices that have the same size! 
+                This is different in matrix multiplication, where you might multiply a 3x2 matrix by a 2x3 matrix.
+                <br>
+                <br>
+                <strong>3)</strong> Let's try another one, but this time with different dimensions:
+                <div class="equation" lang="latex">
+                \begin{equation*}
+                \begin{bmatrix}
+                12&3&16\\
+                1&19&32
+                \end{bmatrix} + 
+                \begin{bmatrix}
+                14&60&5\\
+                42&7&19
+                \end{bmatrix} =
+                \begin{bmatrix}
+                12+14&3+60&16+5\\
+                1+42&19+7&32+19
+                \end{bmatrix} =
+                \begin{bmatrix}
+                26&63&21\\
+                43&26&51
+                \end{bmatrix}
+                \end{equation*}
+                </div>
+                Simple as that!
+                <h5 id="practice">Practice: </h5>
+                <strong>1) </strong>Add the following vectors:
+                <div class="equation" lang="latex">
+                \begin{equation*}
+                \begin{bmatrix}
+                12\\
+                1\\
+                3
+                \end{bmatrix} + 
+                \begin{bmatrix}
+                2\\
+                4\\
+                7
+                \end{bmatrix}
+                \end{equation*}
+                </div>
+                <div id="pract1" style="visibility: hidden;" class="equation" lang="latex">
+                \begin{equation*}
+                \begin{bmatrix}
+                12\\
+                1\\
+                3
+                \end{bmatrix} + 
+                \begin{bmatrix}
+                2\\
+                4\\
+                7
+                \end{bmatrix} = 
+                \begin{bmatrix}
+                12+2\\
+                1+4\\
+                3+7
+                \end{bmatrix} = 
+                \begin{bmatrix}
+                14\\
+                5\\
+                10
+                \end{bmatrix}
+                \end{equation*}
+                </div>
+                <button class="pract-bttn" id="pract-bttn1" type="button" style="margin-top: 1em;">Solution</button>
+                <h5 id="jscode">Code:</h5>
+                Now, let's see how this might look in Javascript:<br>
+                <button id="runjs" type="button" onclick="executeCode()" style="margin-top: 1em;">Run Code</button>
+                &nbsp;(If nothing happens, you may have an error)
+                <div id="editor">//The matrices to be added together: 
+var a = [[3, 4, 6], [2, 7, 5], [9, 0, 5], [6, 8, 1]]; //We'll make a 3x4 array
+var b = [[6, 4, 1], [2, 0, 5], [1, 9, 8], [7, 3, 2]];
+var sum = [];
+
+for(i = 0; i < a.length; i++)
+{
+    //Make a fresh row to append to the final matrix:
+    var row = [];
+    for(j = 0; j < a[i].length; j++)
+    {
+        //Add the sum of the two corresponding elements to that row:
+        row.push(a[i][j] + b[i][j]);
+    }
+    //Append the row to the sum matrix:
+    sum.push(row);
+}
+//And we're done!-----------
+
+//Let's print it out:
+var output = "sum = \n[";
+for(i = 0; i < sum.length; i++)
+{
+    for(j = 0; j < sum[i].length; j++)
+    {
+        //Append the element to the output text:
+        output += " " + sum[i][j] + " ";
+    }
+    //Append a newline character to the output string, 
+    //but not if it's the last line:
+    if(i + 1 < sum.length)
+    {
+        output += "\n";
+    }
+}
+//Add the closing bracket:
+output += "]";
+//Finally, print it out:
+alert(output);</div>
+            <div id="articles">
+                <div id="prev">&lt; <a href="normalizingvect.html">Normalizing Vectors</a></div>
+                <div id="top"><a href="#page-content">Top of Page</a></div>
+                <div id="next"><a href="matrixsubtract.html">Matrix Subtraction</a> &gt;</div>
+            </div>
+            </div>
+        </div>
+        <div id="footer">
+            Copyright © 2020 Austin Jacob
+        </div>
+        </div>
+    </body>
+    <script>
+    setup();
+    </script>
+</html>

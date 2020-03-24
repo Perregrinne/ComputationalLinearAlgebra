@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Computational Linear Algebra</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2|Lora&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/css/main.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="/js/main.js"></script>
+        <script src="https://pagecdn.io/lib/ace/1.4.8/ace.js" crossorigin="anonymous" integrity="sha256-+svOVB1WmhKhTy7N21gWvtyXn91qF0r52P2hIArRRug=" ></script>
+        <script src="https://pagecdn.io/lib/ace/1.4.8/theme-twilight.min.js" crossorigin="anonymous"  ></script>
+        <script src="https://pagecdn.io/lib/ace/1.4.8/mode-javascript.min.js" crossorigin="anonymous"  ></script>
+    </head>
+    <body data-ace="true">
+        <div id="page-content">
+            <div id="nav-menu">
+                <p id="cla" style="display: inline-block;">Computational Linear Algebra</p>
+                <a class="bttn" href="/" id="home">Table of Contents</a>
+            </div>
+            <div id="toc">
+                <h3 id="page-title" style="text-align: center;">Matrix Subtraction</h3>
+                We saw that matrix addition was pretty simple, and subtraction works the same way. 
+                Subtract the first element of one matrix from the first element of the other matrix and repeat for each corresponding element in both.
+                <h5 id="process">Steps:</h5>
+                Subtract the first element in both matrices, then the second, thrid, and so on...
+                <div class="equation" lang="latex">
+                \begin{equation*}
+                \begin{bmatrix}
+                a&b&c\\
+                d&e&f\\
+                g&h&i
+                \end{bmatrix} - 
+                \begin{bmatrix}
+                j&k&l\\
+                m&n&o\\
+                p&q&r
+                \end{bmatrix} =
+                \begin{bmatrix}
+                a-j&b-k&c-l\\
+                d-m&e-n&f-o\\
+                g-p&h-q&i-r
+                \end{bmatrix}
+                \end{equation*}
+                </div>
+                <h5 id="examples">Examples:</h5>
+                <strong>1)</strong> Here, we have two 3x3 matrices. We subtract each corresponding element:
+                <div class="equation" lang="latex">
+                \begin{equation*}
+                \begin{bmatrix}
+                1&5&0\\
+                6&2&8\\
+                1&3&4
+                \end{bmatrix} - 
+                \begin{bmatrix}
+                9&0&8\\
+                3&1&7\\
+                5&3&4
+                \end{bmatrix} =
+                \begin{bmatrix}
+                1-9&5-0&0-8\\
+                6-3&2-1&0-7\\
+                1-5&3-3&4-4
+                \end{bmatrix} =
+                \begin{bmatrix}
+                -8&5&-8\\
+                3&1&-7\\
+                -4&0&0
+                \end{bmatrix}
+                \end{equation*}
+                </div>
+                ...Which is the difference between the two.
+                <br>
+                <br>
+                <strong>2)</strong> In this example, we are dealing with different dimensions:
+                <div class="equation" lang="latex">
+                \begin{equation*}
+                \begin{bmatrix}
+                12&3&16\\
+                1&19&32
+                \end{bmatrix} - 
+                \begin{bmatrix}
+                14&60&5\\
+                42&7&19
+                \end{bmatrix} =
+                \begin{bmatrix}
+                12-14&3-60&16-5\\
+                1-42&19-7&32-19
+                \end{bmatrix} =
+                \begin{bmatrix}
+                -2&-57&11\\
+                -41&12&13
+                \end{bmatrix}
+                \end{equation*}
+                </div>
+                And there's your answer.
+                <h5 id="jscode">Code:</h5>
+                Now, let's see how to code this in Javascript:<br>
+                <button id="runjs" type="button" onclick="executeCode()" style="margin-top: 1em;">Run Code</button>
+                &nbsp;(If nothing happens, you may have an error)
+                <div id="editor">//The matrices to be added together: 
+var a = [[8, 3, 6], [6, 9, 5], [8, 0, 7], [5, 4, 2]]; //We'll make a 3x4 array
+var b = [[4, 2, 8], [2, 0, 2], [3, 1, 3], [6, 8, 1]];
+var diff = [];
+
+for(i = 0; i < a.length; i++)
+{
+    //Make a fresh row to append to the final matrix:
+    var row = [];
+    for(j = 0; j < a[i].length; j++)
+    {
+        //Add the difference of the two corresponding elements to that row:
+        row.push(a[i][j] - b[i][j]);
+    }
+    //Append the row to the diff matrix:
+    diff.push(row);
+}
+//And we're done!-----------
+
+//Let's print it out:
+var output = "difference = \n[";
+for(i = 0; i < diff.length; i++)
+{
+    for(j = 0; j < diff[i].length; j++)
+    {
+        //Append the element to the output text:
+        output += " " + diff[i][j] + " ";
+    }
+    //Append a newline character to the output string, 
+    //but not if it's the last line:
+    if(i + 1 < diff.length)
+    {
+        output += "\n";
+    }
+}
+//Add the closing bracket:
+output += "]";
+//Finally, print it out:
+alert(output);</div>
+            <div id="articles">
+                <div id="prev">&lt; <a href="matrixadd.html">Matrix Addition</a></div>
+                <div id="top"><a href="#page-content">Top of Page</a></div>
+                <div id="next"><a href="matrixmultiply.html">Matrix Multiplication</a> &gt;</div>
+            </div>
+            </div>
+        </div>
+        <div id="footer">
+            Copyright © 2020 Austin Jacob
+        </div>
+    </body>
+    <script>
+    setup();
+    </script>
+</html>

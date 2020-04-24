@@ -8,6 +8,7 @@ For now, many of the pages are incomplete or full of copied/pasted information f
 
 ## Credits:
 The Javascript code editor used is [ace](https://ace.c9.io/).
+
 LaTex library is [MathJax](https://www.mathjax.org/).
 
 
